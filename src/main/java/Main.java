@@ -1,9 +1,30 @@
-/* ********************************
 
-Add your Lab 1 code to this file.
+// Variables that I am using
+String w = "\n Welcome to the to database. \n [--Please Select an option to continue--]";
+List<String> menu = List.of("One", "Two", "Three", "Four");
 
-It should consist of ONLY a set of functions, including the main function that is the entry point.
 
-NO classes need be defined for this lab. (If you don't know what a class is, don't worry about it!)
 
- */
+
+void n() {
+    String n = "Rodney";
+    IO.println("Hello, " + n);
+}
+
+void main() {
+    
+}
+
+
+String response = IO.readln("""
+                                 ┌───────────────────────────┐
+                                 │  PLEASE SELECT AN OPTION  │
+                                 ├───────────────────────────┤
+                                 │  1. Write to notes        │
+                                 │  2. View errors           │
+                                 │  3. Console Spam          │
+                                 │  4. Exit                  │
+                                 └───────────────────────────┘
+                                 >""");
+
+
