@@ -1,13 +1,7 @@
-/*
-    NOTE:
-
-    Add to this type any variables and methods required
-    to represent and manipulate the overall state of the high card game.
-
-    You MAY change this to a record/enum as you see fit.
- */
 package core;
 
 public class HighCardGame {
-
+    public static String determineWinner(Card c1, Card c2, Player p1, Player p2) {
+        return "Winner Name or Tie";
+    }
 }

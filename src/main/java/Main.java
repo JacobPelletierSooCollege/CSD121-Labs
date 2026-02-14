@@ -1,19 +1,50 @@
+import core.*;
+import ui.Console;
+
 public class Main {
+    public static void main(String[] args) {
+        String name1 = Console.prompt("Enter name for Player 1: ");
+        String name2 = Console.prompt("Enter name for Player 2: ");
 
-    static void main() {
+        Player p1 = new Player(name1);
+        Player p2 = new Player(name2);
+        CardStack deck = new CardStack();
 
-        /*
-             Place your main game logic here.
-             This is the ONLY code file that should have any reference to the Console class.
+        // 3. This creates and shuffle's the deck for the round.
+        deck.createFullDeck();
+        deck.shuffle();
 
-             The basic flow of the game is as follows:
+        // 4. This deals the cards
+        while (deck.hasCards()) {
+            p1.getHand().addCard(deck.draw());
+            p2.getHand().addCard(deck.draw());
+        }
 
-             1. Prompt for player names
-             2. Deal a shuffled deck evenly to each of the players
-             3. While the players have cards and wish to continue:
-                 b. All players draw one card and reveal them
-                 c. The player with the higher card wins the round (or it's a tie)
-         */
+        // 5. This will loop the game
+        while (p1.getHand().hasCards()) {
+            String input = Console.prompt("Play a round? (y/n): ");
+            if (!input.equalsIgnoreCase("y")) {
+                break;
+            }
 
+            Card c1 = p1.getHand().draw();
+            Card c2 = p2.getHand().draw();
+
+            if (c1 == null || c2 == null) break;
+
+            Console.println(p1.getName() + " drew: " + c1);
+            Console.println(p2.getName() + " drew: " + c2);
+
+            if (c1.rank().ordinal() > c2.rank().ordinal()) {
+                Console.println(p1.getName() + " wins the round!");
+            } else if (c2.rank().ordinal() > c1.rank().ordinal()) {
+                Console.println(p2.getName() + " wins the round!");
+            } else {
+                Console.println("It's a tie!");
+            }
+            Console.println("-------------------------");
+        }
+
+        Console.println("Game Over. Thanks for playing!");
     }
 }
